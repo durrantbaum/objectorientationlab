@@ -107,8 +107,8 @@ function greeting( obj ) {
   return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
   // Do not edit the code above.
 }
-greeting('Mr', 'Durrant', 'Baum')
-//! Is this working?
+greeting('Mr', 'Durrant', 'Baum') // Is this working?
+
 
 //////////////////////////// PROBLEM 8 ////////////////////////////
 
@@ -120,20 +120,19 @@ greeting('Mr', 'Durrant', 'Baum')
   Sum up the values and return the total number.
 */
 
-//!Code Here
+//Code Here
 function totalPopulation( obj2 ) {
   const {utah, california, texas, arizona} = obj2
-  
-  console.log(`The population of ${utah}, ${california}, ${texas}, and ${arizona} is ${totalNum}`)
+  return utah + california + texas + arizona
 }
 
 totalPopulation(
   utah = 100,
   california = 300,
   texas = 200,
-  arizona = 50,
-  totalNum = utah + california + texas + arizona
+  arizona = 50
 ) 
+
 //////////////////////////// PROBLEM 9 ////////////////////////////
 
 /*
@@ -144,9 +143,10 @@ totalPopulation(
   Push these new variables to an array and return the array. 
 */
 
-//!Code Here
+//Code Here
 function ingredients(obj3){
 const {carb, fat, protein} = obj3
+return [carb, fat, protein]
 }
 
 
@@ -248,17 +248,17 @@ myWizard.castSpell()
 
 //Code Here
 class Phone {
-  constructor(brand, model, storage, color, price, sold){
+  constructor(brand, model, storage, color, price){
     this.brand = brand
     this.model = model
     this.storage = storage
     this.color = color
     this.price = price
-    sold === false //! Is this right?
+    this.sold = false
   }
   sell(){
-    sold === true
-    console.log(`${brand} ${model} has been sold.`)
+    this.sold = true
+    console.log(`${this.brand} ${this.model} has been sold.`)
   }
   changePrice(newPrice){
     this.price = newPrice
@@ -287,9 +287,9 @@ const phone3 = new Phone('OnePlus', '7 Pro', 256, 'Almond', 700)
   Then console.log that object to see the price change
 */ 
 
-//!Code Here 
-// phone3.changePrice(500)
-// console.log(this.price)
+//Code Here 
+phone3.changePrice(500)
+console.log(phone3)
 
 /*
   Now call the sell method on one of your other phone objects
@@ -297,9 +297,9 @@ const phone3 = new Phone('OnePlus', '7 Pro', 256, 'Almond', 700)
   Print the value of that phone's sell property to make sure it's been changed to true
 */
 
-//!Code Here 
-// phone2.sell()
-// console.log(sold)
+//Code Here 
+phone2.sell()
+console.log(phone2.sold)
 
 //////////////////////////// PROBLEM 15 ////////////////////////////
 
@@ -370,9 +370,9 @@ class Vehicle {
     this.color = color
     this.mileage = mileage
   }
-  move(miles){ //! I don't think this is right.
-    numOfMiles = this.mileage + miles
-    console.log(numOfMiles)
+  move(miles){
+    this.mileage += miles
+    console.log(this.mileage)
   }
 }
 
@@ -430,8 +430,23 @@ myFirstMotorcycle.move(500)
 
 //Code Here
 class Boat extends Vehicle {
-  constructor(capacity, color, mileage, make, isCool, name, type, isSeaworthy){
-    super(capacity, color, mileage, make, isCool)
+  constructor(capacity, color, mileage, name, type, isSeaworthy){
+    super(capacity, color, mileage,)
+    this.name = name
+    this.type = type
+    this.isSeaworthy = isSeaworthy
+  }
+
+  checkSeaworthiness(){
+  if(this.isSeaworthy){
+    console.log(`The ${this.type} ${this.name} is seaworthy!`)
+  } else{
+    console.log(`You need to fix your boat ${this.type}!`)
+    }
+  }
+
+  performMaintenance() {
+    this.isSeaworthy = true
   }
 }
 
@@ -441,21 +456,25 @@ class Boat extends Vehicle {
 */
 
 //Code Here
+const myFirstBoat = new Boat(4, 'White', 4000, 'Seascout', 'Sailboat', false)
 
 /*
   Call the checkSeaworthiness method on your new boat
 */
 
 //Code Here
+myFirstBoat.checkSeaworthiness()
 
 /*
   Now run the performMaintenance method on your boat
 */
 
 //Code Here 
+myFirstBoat.performMaintenance()
 
 /*
   Check the seaworthiness once more (you should be ready for the water!)
 */
 
 //Code Here
+myFirstBoat.checkSeaworthiness()
